@@ -1,0 +1,1 @@
+int Power2(int);//header file to declare a function
