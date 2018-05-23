@@ -1,0 +1,47 @@
+Run the program in Task 1. And write your answer blow each of the following questions.
+
+1.	What is this program supposed to do?
+
+	The programme receieve inputs of name, id and gender and 
+
+
+2.	Is the memory dynamically allocated or statically allocated
+
+	Because malloc() and free() are used, the memory is dynamically allocated
+
+
+3.	What  is %*c used for?
+
+	%*c is used to read and ignore a character, which particularly in this case used to ignore a space next to the id number. (Because people input like : ECWU 123 girl, 	which contains a space between id and gender.)
+
+
+4.	If %-10s is changed to %10s, what happened?
+
+	If changed to %10s, the name will be align to right
+
+
+5.	Why do we need to add free(p)?
+
+	Because after malloc() a block of memory of specified size will be allocated, and when we finished the function, we need to use free() to release the used memory.
+
+//CODE HERE
+#include <stdio.h>
+#include <stdlib.h>
+struct stuRec{
+  char name[20];
+  int id; 
+  char gender;
+};
+
+int main()
+{
+struct stuRec *p;
+p = (struct stuRec*)malloc(sizeof(struct stuRec));
+if (p){
+printf("please input name, id and gender\n");
+scanf("%s%d%*c%c", p->name, &p->id, &p->gender);
+printf("name:%-10s,ID:%d,gender:%c\n", p->name,p->id,p->gender);
+free (p);
+}
+return 0;
+}
